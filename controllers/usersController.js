@@ -26,6 +26,14 @@ router.put('/', (req, res) => {
     })
 })
 
+router.patch('/', (req, res) => {
+    User.findByIdAndUpdate(req.body.id, {
+        userName: req.body.userName
+    }).then((newUser) => {
+        res.json({data: newUser})
+    })
+})
+
 router.delete("/:id", (req, res) => {
     User.findByIdAndDelete(req.body.id)
     .then((deaduser) => {
@@ -41,7 +49,7 @@ module.exports = router
 
 
 
-/*router.put('/', (req, res) => {
+/* router.put('/', (req, res) => {
     User.findByIdAndUpdate(req.body.id).then((newUser) => {
         res.json({data: newUser})
     })
@@ -52,4 +60,4 @@ router.delete("/", (req, res) => {
     .then((deaduser) => {
         res.json({data: deaduser})
     })
-})*/
+}) */
