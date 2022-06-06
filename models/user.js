@@ -6,19 +6,6 @@ const userSchema = new mongoose.Schema({
     characters: []
 })
 
-
-const characterSchema = new mongoose.Schema({
-    characterName: String,
-    class: String,
-    stats: {
-        hp: Number,
-        mana: Number
-    },
-    alignment: String,
-    weapon: String,
-    level: Number
-})
-
-const User = mongoose.model('Character', userSchema)
+const User = mongoose.model('User', userSchema)
 
 module.exports = User

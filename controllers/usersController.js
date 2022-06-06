@@ -20,6 +20,36 @@ router.post('/', (req, res) => {
     }).then(newUser => res.json(newUser))
 })
 
+router.put('/', (req, res) => {
+    User.findByIdAndUpdate(req.body.id).then((newUser) => {
+        res.json({data: newUser})
+    })
+})
+
+router.delete("/:id", (req, res) => {
+    User.findByIdAndDelete(req.body.id)
+    .then((deaduser) => {
+        res.json({data: deaduser})
+    })
+})
+
 
 
 module.exports = router
+
+
+
+
+
+/*router.put('/', (req, res) => {
+    User.findByIdAndUpdate(req.body.id).then((newUser) => {
+        res.json({data: newUser})
+    })
+})
+
+router.delete("/", (req, res) => {
+    User.findByIdAndDelete(req.body.id)
+    .then((deaduser) => {
+        res.json({data: deaduser})
+    })
+})*/

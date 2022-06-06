@@ -4,6 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 app.use(cors())
 const usersController = require('./controllers/usersController')
+const charactersController = require('./controllers/characterController')
 const logger = require('morgan')
 app.use(logger('dev'));
 
@@ -15,6 +16,7 @@ app.use(logger('dev'));
 
 app.use(express.json())
 app.use('/users', usersController)
+app.use('/characters', charactersController)
 
 
 const PORT = process.env.PORT
