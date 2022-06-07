@@ -17,8 +17,8 @@ router.post('/', (req, res) => {
         "characterName": req.body.characterName,
         "class": req.body.class,
         "stats": {
-            "hp": req.body.hp,
-            "mana": req.body.mana
+            "hp": req.body.stats.hp,
+            "mana": req.body.stats.mana,
         },
         "alignment": req.body.alignment,
         "weapon": req.body.weapon,
@@ -38,9 +38,10 @@ router.put('/', (req, res) => {
 })
 
 router.patch('/', (req, res) => {
+    console.log(req.body)
     Character.findByIdAndUpdate(req.body.id, {
         characterName: req.body.characterName
-    }).then((newCharacter) => {
+    }, {new: true}).then((newCharacter) => {
         res.json({data: newCharacter})
     })
 })
