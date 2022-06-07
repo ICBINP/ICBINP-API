@@ -26,19 +26,13 @@ router.post('/', (req, res) => {
     })//.then(newCharacter => res.json(newCharacter))
     .then(newCharacter => {
         let character = newCharacter
-        //User.findOneAndUpdate({userName: req.body.userName}, {$push {characters: newCharacter }]})
-        User.find({userName: req.body.userName})
+        User.findByIdAndUpdate(req.body.id, {$push: {characters: newCharacter._id }})
         .then(user => {
-            let currentUser = user
-            console.log(character)
-            user[0].characters.push(character)
-            console.log(user)
-        }).then(() => {
-            user.save()
-            res.json({data: user})
+            res.json(user)
         })
     })
-})
+    })
+
 
 router.put('/', (req, res) => {
     Character.findByIdAndUpdate(req.body.id).then((newCharacter) => {

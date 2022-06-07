@@ -1,9 +1,12 @@
 //schema for characters
 const mongoose = require('../db/connection')
+//const Character = require()
 
-const userSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
     userName: String,
-    characters: [{type: Object, ref: 'characters'}]
+    characters: [{type: Schema.Types.ObjectId, ref: 'Character'}]
 })
 
 const User = mongoose.model('User', userSchema)

@@ -6,7 +6,7 @@ const User = require('../models/user')
 
 
 router.get('/', (req, res) => {
-    User.find({}).then(user => {
+    User.find({}).populate({path: "characters"}).then(user => {
         res.json(user)
     }).catch((err) => {
         console.log(err)
