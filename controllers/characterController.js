@@ -25,7 +25,6 @@ router.post('/', (req, res) => {
         "level": req.body.level
     })//.then(newCharacter => res.json(newCharacter))
     .then(newCharacter => {
-        let character = newCharacter
         User.findByIdAndUpdate(req.body.id, {$push: {characters: newCharacter._id }})
         .then(user => {
             res.json(user)
@@ -36,14 +35,24 @@ router.post('/', (req, res) => {
 
 router.put('/', (req, res) => {
     Character.findByIdAndUpdate(req.body.id).then((newCharacter) => {
-        res.json({data: newCharacter})
+        
     })
 })
 
 router.patch('/', (req, res) => {
     console.log(req.body)
     Character.findByIdAndUpdate(req.body.id, {
-        characterName: req.body.characterName
+        characterName: req.body.characterName,
+        class: req.body.class,
+        "stats.hp": req.body.stats.hp,
+        "stats.mana": req.body.stats.mana,
+            /*hp: req.body.stats.hp,
+            mana: req.body.stats.mana,*/
+        
+        alignment: req.body.alignment,
+        weapon: req.body.weapon,
+        level: req.body.level
+
     }, {new: true}).then((newCharacter) => {
         res.json({data: newCharacter})
     })
