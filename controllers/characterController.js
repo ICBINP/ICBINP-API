@@ -56,6 +56,16 @@ router.delete("/:id", (req, res) => {
     })
 })
 
+router.delete("/", (req, res) => {
+    Character.findByIdAndDelete(req.body.id)
+    .then(data => {
+        User.findOneAndUpdate({characters: data.id}, {$pull: {characters: data.id}})
+    })
+    .then((deadCharacter) => {
+        res.json({data: deadCharacter})
+    })
+})
+
 
 
 /* router.delete("/:id", (req, res) => {
