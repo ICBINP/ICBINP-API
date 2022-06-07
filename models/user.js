@@ -3,7 +3,7 @@ const mongoose = require('../db/connection')
 
 const userSchema = new mongoose.Schema({
     userName: String,
-    characters: []
+    characters: [{type: Object, ref: 'characters'}]
 })
 
 const User = mongoose.model('User', userSchema)

@@ -23,10 +23,19 @@ router.post('/', (req, res) => {
         "alignment": req.body.alignment,
         "weapon": req.body.weapon,
         "level": req.body.level
-    }).then(newCharacter => res.json(newCharacter))
+    })//.then(newCharacter => res.json(newCharacter))
     .then(newCharacter => {
-        User.find({userName: req.body.userName}).then(user => {
-            user.characters.push(newCharacter)
+        let character = newCharacter
+        //User.findOneAndUpdate({userName: req.body.userName}, {$push {characters: newCharacter }]})
+        User.find({userName: req.body.userName})
+        .then(user => {
+            let currentUser = user
+            console.log(character)
+            user[0].characters.push(character)
+            console.log(user)
+        }).then(() => {
+            user.save()
+            res.json({data: user})
         })
     })
 })

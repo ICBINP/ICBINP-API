@@ -1,6 +1,7 @@
 const mongoose = require('../db/connection')
 
 const characterSchema = new mongoose.Schema({
+    userName: String,
     characterName: String,
     class: String,
     stats: {
