@@ -3,10 +3,9 @@ const router = express.Router()
 
 const User = require('../models/user')
 
-
-
-router.get('/', (req, res) => {
-    User.find({}).populate({path: "characters"}).then(user => {
+router.get('/:userName', (req, res) => {
+    console.log(req.body)
+    User.find({userName: req.params.userName}).populate({path: "characters"}).then(user => {
         res.json(user)
     }).catch((err) => {
         console.log(err)
@@ -35,7 +34,7 @@ router.patch('/', (req, res) => {
 })
 
 router.delete("/:id", (req, res) => {
-    User.findByIdAndDelete(req.body.id)
+    User.findByIdAndDelete(req.params.id)
     .then((deaduser) => {
         res.json({data: deaduser})
     })

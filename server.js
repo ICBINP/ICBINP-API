@@ -23,7 +23,7 @@ const PORT = process.env.PORT
 // const PORT = process.env.PORT ? process.env.PORT : 4000
 
 // Update this to the PORT variable
-app.listen(PORT, () => console.log('Server running on port ' + PORT))
+app.listen(8080, () => console.log('Server running on port ' + PORT))
 
 /*app.listen(app.get("port"), () => {
     console.log(`✅ PORT: ${app.get("port")} 🌟 🌟 🌟`);
