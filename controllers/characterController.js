@@ -15,17 +15,20 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log(req.body)
     Character.create({
-        "characterName": req.body.characterName,
-        "class": req.body.class,
-         "stats": {
-             "hp": req.body.stats.hp,
-             "mana": req.body.stats.mana,
-         },
-        "alignment": req.body.alignment,
-        "weapon": req.body.weapon,
-        "level": req.body.level
+
+        "characterName": req.body.newCharacter.characterName,
+        "class": req.body.newCharacter.characterClass,
+        // "stats": {
+        //     "hp": req.body.stats.hp,
+        //     "mana": req.body.stats.mana,
+        // },
+        "alignment": req.body.newCharacter.alignment,
+        "weapon": req.body.newCharacter.weapon,
+        // "level": req.body.newCharacter.level
+
     })//.then(newCharacter => res.json(newCharacter))
     .then(newCharacter => {
+        console.log(newCharacter)
         User.findByIdAndUpdate(req.body.id, {$push: {characters: newCharacter._id }})
         .then(user => {
             res.json(user)
