@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log(req.body)
     Character.create({
+
         "characterName": req.body.newCharacter.characterName,
         "class": req.body.newCharacter.characterClass,
         // "stats": {
@@ -24,6 +25,7 @@ router.post('/', (req, res) => {
         "alignment": req.body.newCharacter.alignment,
         "weapon": req.body.newCharacter.weapon,
         // "level": req.body.newCharacter.level
+
     })//.then(newCharacter => res.json(newCharacter))
     .then(newCharacter => {
         console.log(newCharacter)
