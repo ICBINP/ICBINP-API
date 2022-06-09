@@ -17,10 +17,10 @@ router.post('/', (req, res) => {
     Character.create({
         "characterName": req.body.characterName,
         "class": req.body.class,
-        // "stats": {
-        //     "hp": req.body.stats.hp,
-        //     "mana": req.body.stats.mana,
-        // },
+         "stats": {
+             "hp": req.body.stats.hp,
+             "mana": req.body.stats.mana,
+         },
         "alignment": req.body.alignment,
         "weapon": req.body.weapon,
         "level": req.body.level
