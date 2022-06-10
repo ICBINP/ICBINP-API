@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
     Character.create({
 
         "characterName": req.body.newCharacter.characterName,
-        "class": req.body.newCharacter.characterClass,
+        "class": req.body.newCharacter.class,
         // "stats": {
         //     "hp": req.body.stats.hp,
         //     "mana": req.body.stats.mana,
