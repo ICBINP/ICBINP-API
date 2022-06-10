@@ -25,7 +25,7 @@ router.get('/:userName', (req, res) => {
 router.post('/', (req, res) => {
     console.log(req.body.userName)
     User.create({
-        "userName": req.body.newUserInfo,
+        "userName": req.body.userName,
         "characters": [] 
     }).then(newUser => res.json(newUser))
 })

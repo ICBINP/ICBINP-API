@@ -29,8 +29,9 @@ router.post('/', (req, res) => {
     })//.then(newCharacter => res.json(newCharacter))
     .then(newCharacter => {
         console.log(newCharacter)
-        User.findByIdAndUpdate(req.body.id, {$push: {characters: newCharacter._id }})
+        User.findByIdAndUpdate(req.body.id, {$push: {characters: newCharacter._id }}, {new: true}).populate({path: 'characters'})
         .then(user => {
+            console.log(user)
             res.json(user)
         })
     })
