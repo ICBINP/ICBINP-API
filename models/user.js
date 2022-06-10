@@ -5,7 +5,7 @@ const mongoose = require('../db/connection')
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    userName: String,
+    userName: {type: String, lowercase: true, trim: true},
     characters: [{type: Schema.Types.ObjectId, ref: 'Character'}]
 })
 

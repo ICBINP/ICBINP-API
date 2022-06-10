@@ -3,18 +3,18 @@ const router = express.Router()
 
 const User = require('../models/user')
 
-router.get('/', (req, res) => {
-    console.log(req.body)
-    User.find({}).populate({path: "characters"}).then(user => {
-        res.json(user)
-    }).catch((err) => {
-        console.log(err)
-    })
-})
+// router.get('/', (req, res) => {
+//     console.log(req.body)
+//     User.find({}).populate({path: "characters"}).then(user => {
+//         res.json(user)
+//     }).catch((err) => {
+//         console.log(err)
+//     })
+// })
 
 
 router.get('/:userName', (req, res) => {
-    console.log(req.body)
+    console.log(req.params.userName)
     User.find({userName: req.params.userName}).populate({path: "characters"}).then(user => {
         res.json(user)
     }).catch((err) => {

@@ -2,7 +2,7 @@ const mongoose = require('../db/connection')
 
 const characterSchema = new mongoose.Schema({
     userName: String,
-    characterName: String,
+    characterName: {type: String, lowercase: true},
     class: String,
     stats: {
         hp: Number,
